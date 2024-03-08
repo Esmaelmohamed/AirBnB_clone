@@ -1,6 +1,8 @@
 import json
-from models.user import User
+import sys 
+sys.path.insert(0,"/home/esmael/Desktop/AirBnB_clone/models/user.py")
 
+from user import User
 class FileStorage:
     """Class for serializing instances to a JSON file and deserializing JSON file to instances."""
     __file_path = "file.json"

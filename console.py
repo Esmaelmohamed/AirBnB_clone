@@ -1,7 +1,8 @@
+#!/bin/python3
 import cmd
-from models.user import User
+from models.user import User 
 from models.engine.file_storage import FileStorage
-
+ 
 class HBNBCommand(cmd.Cmd):
     """Command interpreter class for the HBNB console."""
     prompt = "(hbnb) "

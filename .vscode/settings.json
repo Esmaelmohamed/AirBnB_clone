@@ -1,0 +1,7 @@
+{
+    "python.analysis.extraPaths": [
+        "./tests/test_save_reload_",
+        "./models/engine",
+        "./models"
+    ]
+}
