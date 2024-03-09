@@ -1,37 +1,75 @@
 import json
-import sys 
-sys.path.insert(0,"/home/esmael/Desktop/AirBnB_clone/models/user.py")
 
-from user import User
 class FileStorage:
-    """Class for serializing instances to a JSON file and deserializing JSON file to instances."""
-    __file_path = "file.json"
-    __objects = {}
+    """A class for storing data in a JSON file."""
 
-    def all(self):
-        """Returns the dictionary __objects."""
-        return self.__objects
+    def __init__(self, file_path):
+        """
+        Initialize FileStorage with the given file path.
 
-    def new(self, obj):
-        """Sets in __objects the obj with key <obj class name>.id."""
-        key = "{}.{}".format(type(obj).__name__, obj.id)
-        self.__objects[key] = obj
+        Args:
+            file_path (str): The path to the JSON file.
+        """
+        self.file_path = file_path
+        self.data = {}
 
     def save(self):
-        """Serializes __objects to the JSON file."""
-        obj_dict = {}
-        for key, obj in self.__objects.items():
-            obj_dict[key] = obj.to_dict()
-        with open(self.__file_path, 'w') as f:
-            json.dump(obj_dict, f)
+        """
+        Save the current data to the JSON file.
+        """
+        with open(self.file_path, 'w') as file:
+            json.dump(self.data, file)
+
+    def load(self):
+        """
+        Load data from the JSON file into the data dictionary.
+        """
+        try:
+            with open(self.file_path, 'r') as file:
+                self.data = json.load(file)
+        except FileNotFoundError:
+            # Handle the case where the file doesn't exist
+            self.data = {}
+
+    def set_item(self, key, value):
+        """
+        Set a key-value pair in the data dictionary.
+
+        Args:
+            key: The key for the item.
+            value: The value to be stored.
+        """
+        self.data[key] = value
+
+    def get_item(self, key):
+        """
+        Retrieve the value associated with the given key from the data dictionary.
+
+        Args:
+            key: The key of the item to retrieve.
+
+        Returns:
+            The value associated with the key, or None if the key is not found.
+        """
+        return self.data.get(key)
+
+    def remove_item(self, key):
+        """
+        Remove an item from the data dictionary based on the key.
+
+        Args:
+            key: The key of the item to remove.
+        """
+        if key in self.data:
+            del self.data[key]
 
     def reload(self):
-        """Deserializes the JSON file to __objects."""
+        """
+        Reload data from the JSON file into the data dictionary.
+        """
         try:
-            with open(self.__file_path, 'r') as f:
-                obj_dict = json.load(f)
-                for key, val in obj_dict.items():
-                    class_name, obj_id = key.split('.')
-                    self.__objects[key] = globals()[class_name](**val)
+            with open(self.file_path, 'r') as file:
+                self.data = json.load(file)
         except FileNotFoundError:
-            pass
+            # Handle the case where the file doesn't exist
+            self.data = {}

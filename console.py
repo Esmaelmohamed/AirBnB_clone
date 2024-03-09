@@ -1,13 +1,15 @@
 #!/bin/python3
-import cmd
+import cmd 
+import sys 
+sys.path.insert(0,"../models/engine")
+from models.engine.file_storage import FileStorage 
 from models.user import User 
-from models.engine.file_storage import FileStorage
- 
+from base_model import BaseModel 
 class HBNBCommand(cmd.Cmd):
     """Command interpreter class for the HBNB console."""
     prompt = "(hbnb) "
-    file_storage = FileStorage()
-    file_storage.reload()
+    stoarge = FileStorage("file.json") 
+    stoarge.reload()
 
     def do_create(self, arg):
         """Creates a new instance of BaseModel, saves it to the JSON file, and prints the id."""
