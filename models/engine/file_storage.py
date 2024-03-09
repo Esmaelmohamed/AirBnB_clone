@@ -1,75 +1,45 @@
+#!/usr/bin/python3
+"""FileStorage module - defines the FileStorage class."""
 import json
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
+
 
 class FileStorage:
-    """A class for storing data in a JSON file."""
+    """Storage engine abstraction handling serialization and deserialization of objects."""
 
-    def __init__(self, file_path):
-        """
-        Initialize FileStorage with the given file path.
+    __file_path = "file.json"
+    __objects = {}
 
-        Args:
-            file_path (str): The path to the JSON file.
-        """
-        self.file_path = file_path
-        self.data = {}
+    def all(self):
+        """Retrieve all objects."""
+        return self.__objects
+
+    def new(self, obj):
+        """Add a new object to the storage dictionary."""
+        obj_key = "{}.{}".format(obj.__class__.__name__, obj.id)
+        self.__objects[obj_key] = obj
 
     def save(self):
-        """
-        Save the current data to the JSON file.
-        """
-        with open(self.file_path, 'w') as file:
-            json.dump(self.data, file)
-
-    def load(self):
-        """
-        Load data from the JSON file into the data dictionary.
-        """
-        try:
-            with open(self.file_path, 'r') as file:
-                self.data = json.load(file)
-        except FileNotFoundError:
-            # Handle the case where the file doesn't exist
-            self.data = {}
-
-    def set_item(self, key, value):
-        """
-        Set a key-value pair in the data dictionary.
-
-        Args:
-            key: The key for the item.
-            value: The value to be stored.
-        """
-        self.data[key] = value
-
-    def get_item(self, key):
-        """
-        Retrieve the value associated with the given key from the data dictionary.
-
-        Args:
-            key: The key of the item to retrieve.
-
-        Returns:
-            The value associated with the key, or None if the key is not found.
-        """
-        return self.data.get(key)
-
-    def remove_item(self, key):
-        """
-        Remove an item from the data dictionary based on the key.
-
-        Args:
-            key: The key of the item to remove.
-        """
-        if key in self.data:
-            del self.data[key]
+        """Serialize objects to JSON file."""
+        serialized_objects = {key: obj.to_dict() for key, obj in self.__objects.items()}
+        with open(self.__file_path, "w") as file:
+            json.dump(serialized_objects, file)
 
     def reload(self):
-        """
-        Reload data from the JSON file into the data dictionary.
-        """
+        """Deserialize JSON file to objects."""
         try:
-            with open(self.file_path, 'r') as file:
-                self.data = json.load(file)
+            with open(self.__file_path, "r") as file:
+                deserialized_objects = json.load(file)
+                for key, obj_data in deserialized_objects.items():
+                    class_name, obj_id = key.split('.')
+                    class_ref = eval(class_name)
+                    del obj_data['__class__']
+                    self.__objects[key] = class_ref(**obj_data)
         except FileNotFoundError:
-            # Handle the case where the file doesn't exist
-            self.data = {}
+            pass
