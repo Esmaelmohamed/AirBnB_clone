@@ -33,3 +33,45 @@ all: Display all instances of a class.
 update: Update an instance with new information.
 (hbnb) update BaseModel 1234-5678 name "New Name"
 
+# Airbnb Clone HTML & CSS Project Process in webstatic folder 
+
+## 1. Project Setup
+- Set up project directory and files.
+- Created `index.html` as main entry point.
+- Created CSS files for styling.
+
+## 2. HTML Structure
+- Defined basic HTML structure with `<!DOCTYPE html>` declaration.
+- Added `<head>` section with metadata (charset, viewport, title) and links to CSS files.
+- Structured `<body>` section with header, main content, and footer.
+
+## 3. Header Section
+- Designed header section with Airbnb logo using `<img>` tag.
+- Styled header with CSS for alignment and appearance.
+
+## 4. Main Content - Filters Section
+- Created filters section containing search button, locations, and amenities.
+- Styled filters section using CSS with flexbox for layout and appearance.
+- Implemented hover effects and popover functionality using CSS.
+
+## 5. Main Content - Places Section
+- Designed places section to display rental listings.
+- Utilized flexbox for grid-like layout of listings.
+- Styled each place listing including title, price, information, user details, description, amenities, and reviews.
+- Used absolute positioning for certain elements.
+
+## 6. Footer Section
+- Created simple footer with text "Best School".
+- Styled footer for alignment and appearance.
+
+## 7. Responsive Design
+- Ensured page layout adapts to different screen sizes using relative units, flexbox, and media queries.
+- Adjusted widths, heights, margins, and paddings for cohesive design across devices.
+- Ensured readability and usability on smaller screens.
+
+## 8. Testing and Refinement
+- Tested webpage on different devices and screen sizes.
+- Made necessary adjustments to CSS and HTML to fix layout issues.
+- Refactored code for better organization, readability, and maintainability. 
+![final index.html](air.png)
+
