@@ -1,0 +1,100 @@
+/* styles/102-filters.css */
+
+.filters {
+    background-color: white; 
+    height: auto; /* Changed to auto for responsiveness */
+    width: 100%; 
+    border: 1px solid #DDDDDD; 
+    border-radius: 4px; 
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Added flex-wrap for responsiveness */
+    padding: 10px; /* Added padding for spacing */
+}
+
+.search-btn {
+    background-color: #FF5A5F;
+    color: #FFFFFF;
+    height: 48px;
+    width: auto; /* Changed to auto for responsiveness */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 10px; /* Reduced margin for spacing */
+    margin-bottom: 10px; /* Added margin for spacing */
+    transition: opacity 0.3s ease;
+}
+
+.search-btn:hover {
+    opacity: 0.9;
+} 
+
+.locations__container {
+    height: 100%; 
+    width: 100%; /* Changed to 100% for responsiveness */
+    border-right: none; /* Removed border-right for responsiveness */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Added justify-content for spacing */
+    padding-right: 10px; /* Added padding for spacing */
+    margin-left: 20px;
+} 
+
+.amenities {
+    padding-left: 20px;
+    margin-left: auto; /* Added margin-left:auto for responsiveness */
+}
+
+.locations__title, .amenities__title {
+    font-weight: 600; 
+    line-height: 0;
+} 
+
+.locations__subtitle, .amenities__subtitle {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+ul li {
+    list-style: none;
+    
+}
+
+.popover {
+    position: fixed;
+    top:-100%;
+    width: auto; /* Changed to auto for responsiveness */
+    border-right: none; /* Removed border-right for responsiveness */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #FAFAFA;
+    padding-block: 20px;
+    margin: 0 auto;
+    z-index: 100;
+    overflow-y: auto; /* Added overflow-y:auto for scrolling */
+}
+.popover ul li {
+    padding-right: 1rem;
+} 
+
+.locations:hover  .popover { /* Display popover on hover */
+    top: auto; /* Changed to auto for responsiveness */
+    bottom: 0; /* Added bottom position for responsiveness */
+    left: 0; /* Added left position for responsiveness */
+    right: 0; /* Added right position for responsiveness */
+    margin: 0 auto; /* Added margin for centering */
+}
+
+.amenities:hover .popover{
+    top: auto; /* Changed to auto for responsiveness */
+    bottom: 0; /* Added bottom position for responsiveness */
+    left: 0; /* Added left position for responsiveness */
+    right: 0; /* Added right position for responsiveness */
+    margin: 0 auto; /* Added margin for centering */
+    border-right: none;
+    border-left: 1px solid #DDDDDD;
+    padding-block: 1rem;
+}

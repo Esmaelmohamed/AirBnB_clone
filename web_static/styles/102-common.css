@@ -1,0 +1,16 @@
+/* styles/102-common.css */
+
+body {
+    color: #484848; 
+    font-size: 14px; 
+    font-family: "Circular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+} 
+
+.container {
+    max-width: 100%; /* Changed max-width to 100% for responsiveness */
+    padding: 30px 20px; /* Changed padding for responsiveness */
+    margin: 0 auto;
+    position: relative;
+}
