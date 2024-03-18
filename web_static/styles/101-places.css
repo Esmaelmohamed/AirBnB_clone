@@ -11,6 +11,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: space-evenly;
 }
 
 .places article {
@@ -145,7 +146,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: space-between; /* Distribute items evenly along the main axis */
+    justify-content: space-evenly; /* Distribute items evenly along the main axis */
 }
 
 .places article {
