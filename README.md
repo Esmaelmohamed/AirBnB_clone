@@ -31,7 +31,8 @@ all: Display all instances of a class.
 (hbnb) all BaseModel
 
 update: Update an instance with new information.
-(hbnb) update BaseModel 1234-5678 name "New Name"
+(hbnb) update BaseModel 1234-5678 name "New Name" 
+```
 
 # Airbnb Clone HTML & CSS Project Process in webstatic folder 
 
