@@ -74,5 +74,7 @@ update: Update an instance with new information.
 - Tested webpage on different devices and screen sizes.
 - Made necessary adjustments to CSS and HTML to fix layout issues.
 - Refactored code for better organization, readability, and maintainability. 
-![final index.html](air.png)
+![final index.html](air1.png)
+![final places.html](air2.png)
+
 
